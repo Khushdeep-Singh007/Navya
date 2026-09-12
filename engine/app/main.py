@@ -20,6 +20,7 @@ for p in [_root_dir, _engine_dir, _cur]:
         sys.path.insert(0, p)
 
 from simulation.routers.simulate import router as simulation_router
+from optimizer.routers.optimize import router as optimizer_router
 
 app = FastAPI(
     title="GridPilot Optimization & Simulation Engine",
@@ -57,14 +58,10 @@ def health_check():
 app.include_router(simulation_router, tags=["Simulation"])
 # Also mount under /simulation prefix for explicit namespacing
 app.include_router(simulation_router, prefix="/simulation", tags=["Simulation (prefixed)"])
+app.include_router(optimizer_router, tags=["Optimizer"])
+app.include_router(optimizer_router, prefix="/optimizer", tags=["Optimizer"])
 
-# NOTE: Member C will register optimizer router here via PR:
-# try:
-#     from optimizer.routers.optimize import router as optimizer_router
-#     app.include_router(optimizer_router, prefix="/optimizer", tags=["Optimizer"])
-#     app.include_router(optimizer_router, tags=["Optimizer"])
-# except ImportError:
-#     pass
+
 
 
 if __name__ == "__main__":
