@@ -58,6 +58,34 @@ Forecast → Predict → Prevent → Optimize → Protect → Power
 - Vercel
 - Render
 
+## Getting Started
+
+### Prerequisites
+- Node.js 18+ & npm
+- Python 3.10+
+
+### Frontend Setup
+```bash
+cd frontend
+npm install
+npm run dev
+```
+The operator dashboard will be available at `http://localhost:3000` (connects to backend at `http://localhost:5000` by default).
+
+### Backend Setup
+```bash
+cd backend
+npm install
+npm run dev
+```
+
+### Engine Setup
+```bash
+cd engine
+pip install -r requirements.txt
+uvicorn app.main:app --reload --port 8000
+```
+
 ## Future Scope
 
 - IoT sensor integration

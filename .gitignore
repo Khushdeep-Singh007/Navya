@@ -1,6 +1,10 @@
 # Node
 backend/node_modules/
 backend/dist/
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+*.tsbuildinfo
 
 # Python
 __pycache__/
