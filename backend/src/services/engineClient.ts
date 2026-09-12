@@ -595,10 +595,9 @@ export class EngineClient {
    */
   async evaluateLadder(
     payload: {
-      current_state?: CommunityState;
-      forecast?: ForecastData;
-      target_stage?: number;
-    }
+  state: current_state,
+  demand: current_state.demand
+}
   ): Promise<LadderResponse> {
     if (this.isMock) {
       return this.getMockLadderResponse(
