@@ -1,6 +1,6 @@
 import type { ComparePlansResult, CommunityState, DispatchPlan, ForecastData, LadderResponse, ManualOverrideSettings, RunwayForecast, SafeUser, ScenarioEventPayload, SignalState } from '@/types/navya';
 
-const base = (import.meta.env.VITE_API_BASE_URL as string | undefined) ?? 'http://localhost:5000';
+const base = (import.meta.env.VITE_API_BASE_URL as string | undefined) ?? 'http://localhost:3001';
 const tokenKey = 'navya_token';
 export const getToken = () => localStorage.getItem(tokenKey);
 export const setSession = (token:string, user:SafeUser) => { localStorage.setItem(tokenKey, token); localStorage.setItem('navya_user', JSON.stringify(user)); };
