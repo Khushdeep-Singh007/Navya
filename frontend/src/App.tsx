@@ -188,11 +188,7 @@ function AuthenticatedRouter({ user, onLogout }: {user:SafeUser;onLogout:()=>voi
 }
 
 function App() {
-  const [user,setUser]=useState<SafeUser|null>({
-  id: 'demo-user',
-  email: 'demo@navya.local',
-  role: 'operator'
-});
+  const [user,setUser]=useState<SafeUser|null>(()=>getToken()?getStoredUser():null);
   const [location,setLocation]=useLocation();
   useEffect(()=>{document.title='NAVYA — Microgrid Operations'; if(getToken()&&!user)api.me().then(setUser).catch(()=>{clearSession();setLocation('/login');});},[]);
   useEffect(()=>{if(user && location==='/login') setLocation('/');},[user,location,setLocation]);
